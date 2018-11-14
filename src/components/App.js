@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {BrowserRouter,Route} from 'react-router-dom'
 import SelectBar from './SelectBar';
-import ListAllPosts from './ListAllPosts';
-import Post from './Post';
-import ListUsers from './ListUsers';
-import User from  './User';
+import ListAllPosts from './Post Components/ListAllPosts';
+import Post from './Post Components/Post';
+import ListUsers from './User Components/ListUsers';
+import User from  './User Components/User';
 
 class App extends Component {
   render() {
