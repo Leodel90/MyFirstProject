@@ -1,8 +1,13 @@
 import React from 'react';
 import  {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {getUsers} from '../../redux-store/actions/UserActions';
 
 class ListUsers extends React.Component{
+    componentDidMount(){
+        this.props.getUsers();
+    }
+
     renderUser(user){
         return (
         <li key={user.id}>
@@ -36,4 +41,11 @@ const mapStateToProps=(state)=>{
         users:state.rUsers.users
     }
 }
-export default connect(mapStateToProps)(ListUsers);
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        getUsers:()=>{
+            dispatch(getUsers());
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ListUsers);

@@ -6,7 +6,7 @@ import {getPosts} from '../../redux-store/actions/PostActions';
 
 class User extends React.Component{
     componentDidMount(){
-
+        this.props.getPosts(post=>post.userId === this.props.user.id);
     }
     render(){
         return (
@@ -38,4 +38,4 @@ const mapDispatchToProps=(dispatch)=>{
         }
     }
 }
-export default connect(mapStateToProps)(User);
+export default connect(mapStateToProps,mapDispatchToProps)(User);

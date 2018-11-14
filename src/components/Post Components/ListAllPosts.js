@@ -4,7 +4,9 @@ import ListPost from './ListPosts';
 import {getPosts} from '../../redux-store/actions/PostActions';
 
 class ListAllPost extends React.Component{
-    
+    componentDidMount(){
+        this.props.getPosts(post=>true);
+    }
     render(){
         return(
             <div>

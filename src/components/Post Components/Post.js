@@ -3,11 +3,15 @@ import {connect} from 'react-redux';
 import ListComments from '../Comment Components/ListComments';
 import AddComment from '../Comment Components/AddComent';
 import {deletePost} from '../../redux-store/actions/PostActions';
-
+import {getComments} from '../../redux-store/actions/CommentActions';
 class Post extends React.Component{
     state={
         areCommentsLoaded:false,
         isCommentAdderLoaded:false
+    }
+
+    componentDidMount(){
+        this.props.getComments(comment=>comment.postId===this.props.post.id)
     }
     handleDelete=(e)=>{
         this.props.deletePost(this.props.post.id);
@@ -46,8 +50,10 @@ const mapStateToProps=(state,ownProps)=>{
 }
 const mapDispatchToProps=(dispatch)=>{
     return {
-        deletePost:(id)=>dispatch( deletePost(id) )
-        
+        deletePost:(id)=>dispatch( deletePost(id) ),
+        getComments:(condition)=>{
+            dispatch(getComments(condition));
+        }
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Post);

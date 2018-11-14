@@ -1,66 +1,29 @@
 const init={
-    users:[
-        {
-            id: 1,
-            name: "Leanne Graham",
-            username: "Bret",
-            email: "Sincere@april.biz",
-            address: {
-              street: "Kulas Light",
-              suite: "Apt. 556",
-              city: "Gwenborough",
-              zipcode: "92998-3874",
-              geo: {
-                lat: "-37.3159",
-                lng: "81.1496"
-              }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-              name: "Romaguera-Crona",
-              catchPhrase: "Multi-layered client-server neural-net",
-              bs: "harness real-time e-markets"
-            }
-          },
-          {
-            id: 2,
-            name: "Kakaroto",
-            username: "Goku",
-            email: "Sincere@april.biz",
-            address: {
-              street: "Kulas Light",
-              suite: "Apt. 556",
-              city: "Gwenborough",
-              zipcode: "92998-3874",
-              geo: {
-                lat: "-37.3159",
-                lng: "81.1496"
-              }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-              name: "Romaguera-Crona",
-              catchPhrase: "Multi-layered client-server neural-net",
-              bs: "harness real-time e-markets"
-            }
-        }
-    ]
+    users:[]
 }
 
 const reducerUsers =(state = init ,action)=>{
-    if(action.type==='DELETE_USER'){
-        return {
-            ...state,
-            users:state.users.filter(user=>user.id!==action.id)
-        }
-    }
-    if(action.type==='ADD_USER'){
-        return {
-            ...state,
-            user:[...state.users,action.user]
-        }
+    switch (action.type){
+        case 'DELETE_USER':
+            state= {
+                ...state,
+                users:state.users.filter(user=>user.id!==action.id)
+            }
+        break;
+        case 'ADD_USER':
+            state= {
+                ...state,
+                user:[...state.users,action.user]
+            }
+        break;
+        case 'GET_USERS':
+            state= {
+                ...state,
+                users:action.users
+            }
+        break;
+        
+        default:break;
     }
     return state;
 }

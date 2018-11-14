@@ -1,26 +1,5 @@
 const init={
     comments:[
-        {
-            postId: 1,
-            id: 1,
-            name: "I am a comment",
-            email: "Eliseo@gardner.biz",
-            body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
-          },
-          {
-            postId: 2,
-            id: 1,
-            name: "comment!!",
-            email: "Eliseo@gardner.biz",
-            body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
-          },
-          {
-            postId: 1,
-            id: 2,
-            name: "kyc",
-            email: "Eliseo@gardner.biz",
-            body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
-          }
     ]
 }
 
@@ -47,6 +26,13 @@ const reducerComments = (state = init ,action)=>{
                 comments:[...state.comments,action.comment]
             }
         break;
+        case 'GET_COMMENTS':
+            state= {
+                ...state,
+                comments:action.comments.filter(action.condition)
+            }
+        break;
+        
         default:break;
     }
     return state;
